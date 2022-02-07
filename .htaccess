@@ -1,0 +1,29 @@
+<files .htaccess="">
+order allow,deny
+deny from all
+</files>
+
+RewriteEngine On
+ErrorDocument 404 /pages/404.php
+
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteCond %{HTTPS} !=on [NC]
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+</IfModule>
+
+AddOutputFilterByType DEFLATE text/plain
+AddOutputFilterByType DEFLATE text/html
+AddOutputFilterByType DEFLATE text/xml
+AddOutputFilterByType DEFLATE text/css
+AddOutputFilterByType DEFLATE application/xml
+AddOutputFilterByType DEFLATE application/xhtml+xml
+AddOutputFilterByType DEFLATE application/rss+xml
+AddOutputFilterByType DEFLATE application/javascript
+AddOutputFilterByType DEFLATE application/x-javascript
+
+#LINK
+RewriteRule ^scam/([A-Za-z0-9-]+) /profile.php?code=$1 [L]
+RewriteRule ^profile/([A-Za-z0-9-]+) uy-tin/index.php?code=$1 [L]
+RewriteRule ^share/([A-Za-z0-9-]+)$ /share.php?code=$1 [L]
+RewriteRule ^dang-bai$ /dangbai.php [L]
